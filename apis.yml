@@ -1,0 +1,32 @@
+aid: breaking-bad
+name: Breaking Bad
+description: "Breaking Bad API"
+url: https://breakingbadapi.com/documentation
+specificationVersion: '0.20'
+created: '2026-05-28'
+modified: '2026-05-28'
+x-source: public-apis/public-apis
+x-category: "Video"
+x-tier: 3
+x-tier-reason: bulk-registered-from-public-apis
+tags:
+  - Video
+  - Public APIs
+apis:
+  - name: Breaking Bad
+    description: "Breaking Bad API"
+    humanURL: https://breakingbadapi.com/documentation
+    baseURL: https://breakingbadapi.com/documentation
+    tags:
+      - Video
+    properties:
+      - type: Documentation
+        url: https://breakingbadapi.com/documentation
+common:
+  - type: Website
+    url: https://breakingbadapi.com/documentation
+  - type: PublicAPIsListing
+    url: https://github.com/public-apis/public-apis
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
