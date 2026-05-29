@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/draft/00/schema",
+  "name": "Episode",
+  "type": "object",
+  "description": "Episode record from the Breaking Bad community API.",
+  "x-schema-source": "documentation",
+  "x-source-url": "https://github.com/timbiles/Breaking-Bad--API",
+  "properties": {
+    "episode_id": { "type": "int32",  "description": "Unique episode id." },
+    "title":      { "type": "string", "description": "Episode title." },
+    "season":     { "type": "string", "description": "Season number (string, zero-padded by upstream)." },
+    "air_date":   { "type": "string", "description": "Original air date M-D-YYYY." },
+    "characters": { "type": "array",  "items": { "type": "string" }, "description": "Characters featured." },
+    "episode":    { "type": "string", "description": "Episode number within the season." },
+    "series":     { "type": "string", "description": "Breaking Bad or Better Call Saul." }
+  },
+  "required": ["episode_id", "title", "series"]
+}

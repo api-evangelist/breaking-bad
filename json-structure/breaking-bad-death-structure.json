@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-structure.org/draft/00/schema",
+  "name": "Death",
+  "type": "object",
+  "description": "Death record from the Breaking Bad community API.",
+  "x-schema-source": "documentation",
+  "x-source-url": "https://github.com/timbiles/Breaking-Bad--API",
+  "properties": {
+    "death_id":         { "type": "int32",  "description": "Unique death id." },
+    "death":            { "type": "string", "description": "Name of the character who died." },
+    "cause":            { "type": "string", "description": "Cause of death." },
+    "responsible":      { "type": "string", "description": "Character responsible." },
+    "last_words":       { "type": "string", "description": "Last words." },
+    "season":           { "type": "int32",  "description": "Season number." },
+    "episode":          { "type": "int32",  "description": "Episode number." },
+    "number_of_deaths": { "type": "int32",  "description": "How many deaths this record represents." }
+  },
+  "required": ["death_id", "death"]
+}

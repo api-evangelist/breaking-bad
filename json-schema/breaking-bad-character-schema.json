@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/breaking-bad/json-schema/breaking-bad-character-schema.json",
+  "title": "Character",
+  "description": "A character from the Breaking Bad or Better Call Saul television universe.",
+  "type": "object",
+  "x-schema-source": "documentation",
+  "x-source-url": "https://github.com/timbiles/Breaking-Bad--API",
+  "properties": {
+    "char_id": {
+      "type": "integer",
+      "description": "Unique numeric id for the character.",
+      "examples": [1]
+    },
+    "name": {
+      "type": "string",
+      "description": "Character's full name.",
+      "examples": ["Walter White"]
+    },
+    "birthday": {
+      "type": "string",
+      "description": "Character's birthday in M-D-YYYY format.",
+      "examples": ["09-07-1958"]
+    },
+    "occupation": {
+      "type": "array",
+      "description": "List of the character's known occupations.",
+      "items": { "type": "string" },
+      "examples": [["High School Chemistry Teacher", "Meth King Pin"]]
+    },
+    "img": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the character's portrait image (JPG)."
+    },
+    "status": {
+      "type": "string",
+      "description": "Whether the character is alive, deceased, or presumed dead.",
+      "examples": ["Alive", "Deceased", "Presumed dead"]
+    },
+    "nickname": {
+      "type": "string",
+      "description": "A known nickname for the character.",
+      "examples": ["Heisenberg"]
+    },
+    "appearance": {
+      "type": "array",
+      "description": "List of Breaking Bad seasons in which the character appeared.",
+      "items": { "type": "integer" }
+    },
+    "portrayed": {
+      "type": "string",
+      "description": "Actor who portrayed the character.",
+      "examples": ["Bryan Cranston"]
+    },
+    "category": {
+      "type": "string",
+      "description": "Comma-separated list of series the character appears in.",
+      "examples": ["Breaking Bad", "Breaking Bad, Better Call Saul"]
+    },
+    "better_call_saul_appearance": {
+      "type": "array",
+      "description": "List of Better Call Saul seasons in which the character appeared.",
+      "items": { "type": "integer" }
+    }
+  },
+  "required": ["char_id", "name"]
+}

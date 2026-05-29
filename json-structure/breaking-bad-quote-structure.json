@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/draft/00/schema",
+  "name": "Quote",
+  "type": "object",
+  "description": "Quote record from the Breaking Bad community API.",
+  "x-schema-source": "documentation",
+  "x-source-url": "https://github.com/timbiles/Breaking-Bad--API",
+  "properties": {
+    "quote_id": { "type": "int32",  "description": "Unique quote id." },
+    "quote":    { "type": "string", "description": "Verbatim quote text." },
+    "author":   { "type": "string", "description": "Character who said the quote." },
+    "series":   { "type": "string", "description": "Series the quote originated from." }
+  },
+  "required": ["quote_id", "quote", "author"]
+}

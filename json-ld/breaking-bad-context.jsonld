@@ -1,0 +1,43 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "bb":     "https://api-evangelist.github.io/breaking-bad/vocab#",
+
+    "Character": "bb:Character",
+    "Quote":     "bb:Quote",
+    "Episode":   "schema:TVEpisode",
+    "Death":     "bb:Death",
+
+    "char_id":      { "@id": "bb:char_id",      "@type": "schema:Integer" },
+    "name":         { "@id": "schema:name" },
+    "birthday":     { "@id": "schema:birthDate" },
+    "occupation":   { "@id": "schema:hasOccupation", "@container": "@set" },
+    "img":          { "@id": "schema:image",     "@type": "@id" },
+    "status":       { "@id": "bb:status" },
+    "nickname":     { "@id": "schema:additionalName" },
+    "appearance":   { "@id": "bb:appearance",    "@container": "@set" },
+    "portrayed":    { "@id": "bb:portrayedBy" },
+    "category":     { "@id": "bb:series" },
+    "better_call_saul_appearance": { "@id": "bb:betterCallSaulAppearance", "@container": "@set" },
+
+    "quote_id":     { "@id": "bb:quote_id",     "@type": "schema:Integer" },
+    "quote":        { "@id": "schema:text" },
+    "author":       { "@id": "schema:creator" },
+    "series":       { "@id": "bb:series" },
+
+    "episode_id":   { "@id": "bb:episode_id",   "@type": "schema:Integer" },
+    "title":        { "@id": "schema:name" },
+    "season":       { "@id": "schema:partOfSeason" },
+    "air_date":     { "@id": "schema:datePublished" },
+    "characters":   { "@id": "schema:actor",    "@container": "@set" },
+    "episode":      { "@id": "schema:episodeNumber" },
+
+    "death_id":         { "@id": "bb:death_id", "@type": "schema:Integer" },
+    "death":            { "@id": "bb:deceased" },
+    "cause":            { "@id": "bb:causeOfDeath" },
+    "responsible":      { "@id": "bb:responsibleParty" },
+    "last_words":       { "@id": "bb:lastWords" },
+    "number_of_deaths": { "@id": "bb:numberOfDeaths", "@type": "schema:Integer" }
+  }
+}

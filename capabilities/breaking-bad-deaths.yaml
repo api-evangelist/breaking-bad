@@ -1,0 +1,158 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "Breaking Bad API — Deaths"
+  description: >-
+    Deaths surface — Deaths. 3 operations. Lead operation: list every catalogued
+    on-screen death across the series, plus an aggregate death-count operation
+    and a random death sampler. Self-contained Naftiko capability covering one
+    Breaking Bad business surface. Note: upstream host (breakingbadapi.com) is
+    deprecated and unreachable as of 2026-05-29; this capability is preserved
+    for historical reference and for use against community mirrors or local
+    re-implementations.
+  tags:
+    - Breaking Bad
+    - Deaths
+    - Television
+  created: "2026-05-29"
+  modified: "2026-05-29"
+
+binds:
+  - namespace: env
+    keys:
+      BREAKING_BAD_API_BASE: BREAKING_BAD_API_BASE
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "breaking-bad-deaths"
+      baseUri: "https://www.breakingbadapi.com/api"
+      description: "Breaking Bad API — Deaths business capability. Self-contained, no shared references."
+      resources:
+        - name: "deaths"
+          path: "/deaths"
+          operations:
+            - name: "listDeaths"
+              method: GET
+              description: "List every catalogued on-screen death."
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: "death-count"
+          path: "/death-count"
+          operations:
+            - name: "getDeathCount"
+              method: GET
+              description: "Return aggregate death count, optionally filtered by responsible character."
+              inputParameters:
+                - name: "name"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter the count by responsible character (use + for spaces)."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: "random-death"
+          path: "/random-death"
+          operations:
+            - name: "getRandomDeath"
+              method: GET
+              description: "Return one randomly selected death record."
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "breaking-bad-deaths-rest"
+      port: 8080
+      description: "REST adapter for Breaking Bad API — Deaths."
+      resources:
+        - path: "/v1/deaths"
+          name: "deaths"
+          description: "REST surface for the deaths collection."
+          operations:
+            - method: GET
+              name: "listDeaths"
+              description: "List deaths."
+              call: "breaking-bad-deaths.listDeaths"
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: "/v1/deaths/count"
+          name: "death-count"
+          description: "REST surface for the aggregate death count."
+          operations:
+            - method: GET
+              name: "getDeathCount"
+              description: "Get the total death count."
+              call: "breaking-bad-deaths.getDeathCount"
+              with:
+                name: "rest.name"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: "/v1/deaths/random"
+          name: "random-death"
+          description: "REST surface for one random death."
+          operations:
+            - method: GET
+              name: "getRandomDeath"
+              description: "Get one random death."
+              call: "breaking-bad-deaths.getRandomDeath"
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "breaking-bad-deaths-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for Breaking Bad API — Deaths."
+      tools:
+        - name: "list-deaths"
+          description: "List every catalogued on-screen death."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "breaking-bad-deaths.listDeaths"
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: "get-death-count"
+          description: "Return aggregate death count, optionally filtered by responsible character."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "breaking-bad-deaths.getDeathCount"
+          with:
+            name: "tools.name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: "get-random-death"
+          description: "Return one randomly selected death record."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "breaking-bad-deaths.getRandomDeath"
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: "$."

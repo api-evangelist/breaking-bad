@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/00/schema",
+  "name": "Character",
+  "type": "object",
+  "description": "Character record from the Breaking Bad / Better Call Saul community API.",
+  "x-schema-source": "documentation",
+  "x-source-url": "https://github.com/timbiles/Breaking-Bad--API",
+  "properties": {
+    "char_id":                    { "type": "int32",   "description": "Unique character id." },
+    "name":                       { "type": "string",  "description": "Full character name." },
+    "birthday":                   { "type": "string",  "description": "Birthday formatted M-D-YYYY." },
+    "occupation":                 { "type": "array",   "items": { "type": "string" }, "description": "Known occupations." },
+    "img":                        { "type": "string",  "description": "Portrait image URL." },
+    "status":                     { "type": "string",  "description": "Life status (Alive, Deceased, Presumed dead)." },
+    "nickname":                   { "type": "string",  "description": "Common nickname." },
+    "appearance":                 { "type": "array",   "items": { "type": "int32" }, "description": "Breaking Bad season numbers." },
+    "portrayed":                  { "type": "string",  "description": "Actor name." },
+    "category":                   { "type": "string",  "description": "Comma-separated series list." },
+    "better_call_saul_appearance":{ "type": "array",   "items": { "type": "int32" }, "description": "Better Call Saul season numbers." }
+  },
+  "required": ["char_id", "name"]
+}

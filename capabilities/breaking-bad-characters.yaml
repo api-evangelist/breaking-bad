@@ -1,0 +1,186 @@
+naftiko: "1.0.0-alpha2"
+
+info:
+  label: "Breaking Bad API — Characters"
+  description: >-
+    Characters surface — Characters. 3 operations. Lead operation: list every
+    character from the Breaking Bad and Better Call Saul universe with optional
+    name and category filters. Self-contained Naftiko capability covering one
+    Breaking Bad business surface. Note: upstream host (breakingbadapi.com) is
+    deprecated and unreachable as of 2026-05-29; this capability is preserved
+    for historical reference and for use against community mirrors or local
+    re-implementations.
+  tags:
+    - Breaking Bad
+    - Characters
+    - Television
+  created: "2026-05-29"
+  modified: "2026-05-29"
+
+binds:
+  - namespace: env
+    keys:
+      BREAKING_BAD_API_BASE: BREAKING_BAD_API_BASE
+
+capability:
+
+  consumes:
+    - type: http
+      namespace: "breaking-bad-characters"
+      baseUri: "https://www.breakingbadapi.com/api"
+      description: "Breaking Bad API — Characters business capability. Self-contained, no shared references. Upstream is deprecated; point BREAKING_BAD_API_BASE at a mirror if needed."
+      resources:
+        - name: "characters"
+          path: "/characters"
+          operations:
+            - name: "listCharacters"
+              method: GET
+              description: "List every character with optional pagination and filters."
+              inputParameters:
+                - name: "limit"
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum number of characters to return."
+                - name: "offset"
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of characters to skip."
+                - name: "name"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by full character name (use + for spaces)."
+                - name: "category"
+                  in: query
+                  type: string
+                  required: false
+                  description: "Filter by series (Breaking+Bad, Better+Call+Saul)."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: "character-by-id"
+          path: "/characters/{id}"
+          operations:
+            - name: "getCharacterById"
+              method: GET
+              description: "Retrieve a single character by numeric id."
+              inputParameters:
+                - name: "id"
+                  in: path
+                  type: integer
+                  required: true
+                  description: "Numeric character id."
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: "random-character"
+          path: "/character/random"
+          operations:
+            - name: "getRandomCharacter"
+              method: GET
+              description: "Return one randomly selected character."
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      namespace: "breaking-bad-characters-rest"
+      port: 8080
+      description: "REST adapter for Breaking Bad API — Characters. One Spectral-compliant resource per consumed operation, prefixed with /v1."
+      resources:
+        - path: "/v1/characters"
+          name: "characters"
+          description: "REST surface for the characters collection."
+          operations:
+            - method: GET
+              name: "listCharacters"
+              description: "List characters."
+              call: "breaking-bad-characters.listCharacters"
+              with:
+                limit: "rest.limit"
+                offset: "rest.offset"
+                name: "rest.name"
+                category: "rest.category"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: "/v1/characters/{id}"
+          name: "character-by-id"
+          description: "REST surface for a single character by id."
+          operations:
+            - method: GET
+              name: "getCharacterById"
+              description: "Get a character by id."
+              call: "breaking-bad-characters.getCharacterById"
+              with:
+                id: "rest.id"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: "/v1/characters/random"
+          name: "random-character"
+          description: "REST surface for a random character."
+          operations:
+            - method: GET
+              name: "getRandomCharacter"
+              description: "Get one random character."
+              call: "breaking-bad-characters.getRandomCharacter"
+              with: {}
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      namespace: "breaking-bad-characters-mcp"
+      port: 9090
+      transport: http
+      description: "MCP adapter for Breaking Bad API — Characters. One tool per consumed operation, routed inline through this capability's consumes block."
+      tools:
+        - name: "list-characters"
+          description: "List every character with optional pagination and filters."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "breaking-bad-characters.listCharacters"
+          with:
+            limit: "tools.limit"
+            offset: "tools.offset"
+            name: "tools.name"
+            category: "tools.category"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: "get-character"
+          description: "Retrieve a single character by numeric id."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "breaking-bad-characters.getCharacterById"
+          with:
+            id: "tools.id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: "get-random-character"
+          description: "Return one randomly selected character."
+          hints:
+            readOnly: true
+            destructive: false
+            idempotent: true
+          call: "breaking-bad-characters.getRandomCharacter"
+          with: {}
+          outputParameters:
+            - type: object
+              mapping: "$."

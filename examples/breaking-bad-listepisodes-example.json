@@ -1,0 +1,33 @@
+[
+  {
+    "episode_id": 1,
+    "title": "Pilot",
+    "season": "1",
+    "air_date": "01-20-2008",
+    "characters": [
+      "Walter White",
+      "Jesse Pinkman",
+      "Skyler White",
+      "Hank Schrader",
+      "Marie Schrader",
+      "Walter White Jr."
+    ],
+    "episode": "1",
+    "series": "Breaking Bad"
+  },
+  {
+    "episode_id": 62,
+    "title": "Felina",
+    "season": "5",
+    "air_date": "09-29-2013",
+    "characters": [
+      "Walter White",
+      "Jesse Pinkman",
+      "Skyler White",
+      "Lydia Rodarte-Quayle",
+      "Todd Alquist"
+    ],
+    "episode": "16",
+    "series": "Breaking Bad"
+  }
+]

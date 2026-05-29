@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/breaking-bad/json-schema/breaking-bad-episode-schema.json",
+  "title": "Episode",
+  "description": "An episode of Breaking Bad or Better Call Saul.",
+  "type": "object",
+  "x-schema-source": "documentation",
+  "x-source-url": "https://github.com/timbiles/Breaking-Bad--API",
+  "properties": {
+    "episode_id": {
+      "type": "integer",
+      "description": "Unique numeric id for the episode.",
+      "examples": [1]
+    },
+    "title": {
+      "type": "string",
+      "description": "Episode title.",
+      "examples": ["Pilot", "Felina"]
+    },
+    "season": {
+      "type": "string",
+      "description": "Season number as a string (zero-padded by upstream).",
+      "examples": ["1", "5"]
+    },
+    "air_date": {
+      "type": "string",
+      "description": "Original air date in M-D-YYYY format.",
+      "examples": ["01-20-2008"]
+    },
+    "characters": {
+      "type": "array",
+      "description": "Characters appearing in the episode.",
+      "items": { "type": "string" }
+    },
+    "episode": {
+      "type": "string",
+      "description": "Episode number within the season (zero-padded by upstream).",
+      "examples": ["1", "16"]
+    },
+    "series": {
+      "type": "string",
+      "description": "Series the episode belongs to.",
+      "examples": ["Breaking Bad", "Better Call Saul"]
+    }
+  },
+  "required": ["episode_id", "title", "season", "series"]
+}

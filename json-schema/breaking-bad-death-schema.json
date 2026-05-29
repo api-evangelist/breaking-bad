@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api-evangelist.github.io/breaking-bad/json-schema/breaking-bad-death-schema.json",
+  "title": "Death",
+  "description": "A catalogued on-screen death from Breaking Bad or Better Call Saul.",
+  "type": "object",
+  "x-schema-source": "documentation",
+  "x-source-url": "https://github.com/timbiles/Breaking-Bad--API",
+  "properties": {
+    "death_id": {
+      "type": "integer",
+      "description": "Unique numeric id for the death record.",
+      "examples": [1]
+    },
+    "death": {
+      "type": "string",
+      "description": "Name of the character who died.",
+      "examples": ["Emilio Koyama"]
+    },
+    "cause": {
+      "type": "string",
+      "description": "How the character died.",
+      "examples": ["Poison Gas", "Decapitation", "Gunshot"]
+    },
+    "responsible": {
+      "type": "string",
+      "description": "Character responsible for the death.",
+      "examples": ["Walter White"]
+    },
+    "last_words": {
+      "type": "string",
+      "description": "Character's documented last words.",
+      "examples": ["No, please!"]
+    },
+    "season": {
+      "type": "integer",
+      "description": "Season the death occurred in.",
+      "minimum": 1
+    },
+    "episode": {
+      "type": "integer",
+      "description": "Episode the death occurred in.",
+      "minimum": 1
+    },
+    "number_of_deaths": {
+      "type": "integer",
+      "description": "Number of deaths attributed to this single record.",
+      "minimum": 1
+    }
+  },
+  "required": ["death_id", "death"]
+}

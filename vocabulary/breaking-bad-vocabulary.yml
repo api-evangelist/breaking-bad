@@ -1,0 +1,82 @@
+vocabulary:
+  name: Breaking Bad API Vocabulary
+  description: >-
+    Domain vocabulary for the Breaking Bad / Better Call Saul community API.
+    Captures the operational, capability, and content dimensions of the now-deprecated
+    breakingbadapi.com service so the historical schema remains semantically navigable.
+  version: "1.0.0"
+  source: https://github.com/timbiles/Breaking-Bad--API
+  status: deprecated
+  modified: "2026-05-29"
+
+operational:
+  - name: Lookup
+    description: Retrieve a single resource by id (characters, quotes, episodes).
+    operations: [getCharacterById, getQuoteById, getEpisodeById]
+  - name: List
+    description: Retrieve a collection of resources, optionally filtered or paginated.
+    operations: [listCharacters, listQuotes, listEpisodes, listDeaths]
+  - name: Random
+    description: Retrieve a randomly selected single resource.
+    operations: [getRandomCharacter, getRandomQuote, getRandomDeath]
+  - name: Count
+    description: Retrieve an aggregate count over a resource set.
+    operations: [getDeathCount]
+
+capabilities:
+  - name: Character Discovery
+    description: Browse, search, and randomly sample the show's character roster.
+    surfaces: [Characters]
+  - name: Quote Retrieval
+    description: Pull memorable quotes by id, by author, or at random.
+    surfaces: [Quotes]
+  - name: Episode Catalog
+    description: List and look up episodes across Breaking Bad and Better Call Saul.
+    surfaces: [Episodes]
+  - name: Death Catalog
+    description: Browse on-screen deaths, count them, or sample one randomly.
+    surfaces: [Deaths]
+
+content:
+  - term: Character
+    aliases: [Cast Member, Persona]
+    description: A named role from the Breaking Bad or Better Call Saul universe.
+    schema: Character
+    schemaOrg: https://schema.org/Person
+  - term: Quote
+    aliases: [Line, Dialogue]
+    description: A piece of dialogue attributed to a specific character.
+    schema: Quote
+    schemaOrg: https://schema.org/Quotation
+  - term: Episode
+    aliases: [Installment]
+    description: A single episode of either show in the universe.
+    schema: Episode
+    schemaOrg: https://schema.org/TVEpisode
+  - term: Death
+    aliases: [On-Screen Death, Casualty]
+    description: A catalogued instance of a character dying on-screen.
+    schema: Death
+    schemaOrg: https://schema.org/Event
+
+series:
+  - id: breaking-bad
+    title: Breaking Bad
+    seasons: 5
+    network: AMC
+    aired: 2008-2013
+  - id: better-call-saul
+    title: Better Call Saul
+    seasons: 6
+    network: AMC
+    aired: 2015-2022
+
+tags:
+  - Characters
+  - Quotes
+  - Episodes
+  - Deaths
+  - Breaking Bad
+  - Better Call Saul
+  - Television
+  - Pop Culture

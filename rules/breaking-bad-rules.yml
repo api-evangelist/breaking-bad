@@ -1,0 +1,292 @@
+extends:
+  - spectral:oas
+
+functions: []
+
+rules:
+  # ── INFO / METADATA ───────────────────────────────────────────────
+  info-title-format:
+    description: Title must begin with "Breaking Bad".
+    severity: warn
+    given: "$.info.title"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^Breaking Bad"
+
+  info-description-required:
+    description: Info description must be present and meaningful.
+    severity: warn
+    given: "$.info"
+    then:
+      field: description
+      function: truthy
+
+  info-version-required:
+    description: Info version must be present.
+    severity: error
+    given: "$.info"
+    then:
+      field: version
+      function: truthy
+
+  info-license-required:
+    description: A license should be declared for community APIs.
+    severity: info
+    given: "$.info"
+    then:
+      field: license
+      function: truthy
+
+  # ── OPENAPI VERSION ──────────────────────────────────────────────
+  openapi-version-3:
+    description: Spec must be OpenAPI 3.x.
+    severity: error
+    given: "$.openapi"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^3\\."
+
+  # ── SERVERS ──────────────────────────────────────────────────────
+  servers-defined:
+    description: At least one server must be defined.
+    severity: warn
+    given: "$.servers"
+    then:
+      function: truthy
+
+  servers-https-or-noted:
+    description: Server URLs should use HTTPS.
+    severity: warn
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https?://"
+
+  # ── PATHS ────────────────────────────────────────────────────────
+  paths-no-trailing-slash:
+    description: Paths must not end with a trailing slash.
+    severity: error
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        notMatch: "/$"
+
+  paths-kebab-case:
+    description: Path segments should be kebab-case (lowercase, hyphen-separated).
+    severity: warn
+    given: "$.paths[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(/[a-z0-9-]+(/\\{[a-zA-Z0-9_]+\\})?)+$"
+
+  # ── OPERATIONS ───────────────────────────────────────────────────
+  operation-summary-required:
+    description: Every operation must have a summary.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: summary
+      function: truthy
+
+  operation-description-required:
+    description: Every operation must have a description.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: description
+      function: truthy
+
+  operation-operationid-required:
+    description: Every operation must have an operationId.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: operationId
+      function: truthy
+
+  operation-operationid-camelcase:
+    description: operationId must be camelCase.
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  operation-operationid-verb-prefix:
+    description: operationId should start with a known verb (get, list, create, update, delete).
+    severity: info
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^(get|list|create|update|delete|search)"
+
+  operation-summary-title-case:
+    description: Summary should use Title Case.
+    severity: info
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][A-Za-z0-9]*)(\\s+(By|Of|In|On|For|To|A|An|The|And|Or)?\\s*[A-Z][A-Za-z0-9]*)*$"
+
+  operation-tags-required:
+    description: Every operation must have at least one tag.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  operation-microcks-extension:
+    description: Each operation should declare an x-microcks-operation extension.
+    severity: info
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: x-microcks-operation
+      function: truthy
+
+  # ── TAGS ─────────────────────────────────────────────────────────
+  tags-global-defined:
+    description: Global tags array must be defined.
+    severity: warn
+    given: "$"
+    then:
+      field: tags
+      function: truthy
+
+  tag-title-case:
+    description: Tag names should use Title Case.
+    severity: warn
+    given: "$.tags[*].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z]*$"
+
+  tag-description-required:
+    description: Each tag must have a description.
+    severity: warn
+    given: "$.tags[*]"
+    then:
+      field: description
+      function: truthy
+
+  # ── PARAMETERS ───────────────────────────────────────────────────
+  parameter-description-required:
+    description: Each parameter must have a description.
+    severity: warn
+    given: "$.paths[*][*].parameters[*]"
+    then:
+      field: description
+      function: truthy
+
+  parameter-snake-case:
+    description: Parameter names should be snake_case (matches upstream conventions).
+    severity: info
+    given: "$.paths[*][*].parameters[*].name"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-z0-9_]*$|^id$"
+
+  # ── RESPONSES ────────────────────────────────────────────────────
+  response-2xx-required:
+    description: Every operation must declare a 2xx response.
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          patternProperties:
+            "^2\\d\\d$": { type: object }
+          minProperties: 1
+
+  response-rate-limit-documented:
+    description: List endpoints should document a 429 response (the upstream enforced 10k/day).
+    severity: info
+    given: "$.paths[/characters,/quotes,/episodes,/deaths][get].responses"
+    then:
+      field: "429"
+      function: truthy
+
+  response-description-required:
+    description: Every response must have a description.
+    severity: error
+    given: "$.paths[*][*].responses[*]"
+    then:
+      field: description
+      function: truthy
+
+  # ── SCHEMAS ──────────────────────────────────────────────────────
+  schema-snake-case-properties:
+    description: Schema property names should be snake_case (matches the upstream JSON contract).
+    severity: warn
+    given: "$.components.schemas[*].properties[*]~"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-z0-9_]*$"
+
+  schema-property-description:
+    description: Every schema property should have a description.
+    severity: info
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      field: description
+      function: truthy
+
+  schema-property-type:
+    description: Every schema property must declare a type or $ref.
+    severity: error
+    given: "$.components.schemas[*].properties[*]"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          anyOf:
+            - required: [type]
+            - required: ["$ref"]
+
+  # ── SECURITY ─────────────────────────────────────────────────────
+  security-not-required:
+    description: Breaking Bad API was anonymous-access; security blocks are optional.
+    severity: info
+    given: "$"
+    then:
+      field: security
+      function: defined
+
+  # ── HTTP METHOD CONVENTIONS ──────────────────────────────────────
+  get-no-request-body:
+    description: GET operations must not declare a requestBody.
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: requestBody
+      function: falsy
+
+  delete-no-request-body:
+    description: DELETE operations must not declare a requestBody.
+    severity: warn
+    given: "$.paths[*].delete"
+    then:
+      field: requestBody
+      function: falsy
+
+  # ── DEPRECATION ──────────────────────────────────────────────────
+  info-deprecation-noted:
+    description: Deprecated APIs must declare x-status and x-deprecation-note.
+    severity: info
+    given: "$.info"
+    then:
+      field: x-status
+      function: truthy
