@@ -1,12 +1,10 @@
 aid: breaking-bad
 name: Breaking Bad
 description: >-
-  Community-built REST API exposing characters, quotes, episodes, and on-screen
-  deaths from the Breaking Bad and Better Call Saul television universe. The
-  original hosted service at breakingbadapi.com is no longer reachable as of
-  2026-05-29 (DNS does not resolve). The canonical source code remains at
-  github.com/timbiles/Breaking-Bad--API under BSD-3-Clause and is the basis
-  for the historical OpenAPI and capability artifacts in this repo.
+  Community-built REST API exposing characters, quotes, episodes, and on-screen deaths from the Breaking Bad and Better
+  Call Saul television universe. The original hosted service at breakingbadapi.com is no longer reachable as of
+  2026-05-29 (DNS does not resolve). The canonical source code remains at github.com/timbiles/Breaking-Bad--API under
+  BSD-3-Clause and is the basis for the historical OpenAPI and capability artifacts in this repo.
 url: https://github.com/timbiles/Breaking-Bad--API
 image: https://github.com/timbiles/Breaking-Bad--API/raw/master/public/favicon.ico
 specificationVersion: '0.20'
@@ -17,10 +15,9 @@ x-category: Video
 x-type: opensource
 x-status: deprecated
 x-deprecation-note: >-
-  Hosted service breakingbadapi.com is unreachable as of 2026-05-29 (DNS does
-  not resolve). Source code lives at github.com/timbiles/Breaking-Bad--API
-  (BSD-3-Clause, last commit 2022-12-10). Artifacts in this repo are preserved
-  as a historical record of the API contract.
+  Hosted service breakingbadapi.com is unreachable as of 2026-05-29 (DNS does not resolve). Source code lives at
+  github.com/timbiles/Breaking-Bad--API (BSD-3-Clause, last commit 2022-12-10). Artifacts in this repo are preserved as
+  a historical record of the API contract.
 x-tier: 3
 x-tier-reason: bulk-registered-from-public-apis
 tags:
@@ -35,9 +32,8 @@ tags:
 apis:
   - name: Breaking Bad API
     description: >-
-      REST API for Breaking Bad and Better Call Saul data — characters, quotes,
-      episodes, and deaths. Anonymous access (no API key). The original hosted
-      service enforced 10,000 requests per IP per day and is now unreachable.
+      REST API for Breaking Bad and Better Call Saul data — characters, quotes, episodes, and deaths. Anonymous access
+      (no API key). The original hosted service enforced 10,000 requests per IP per day and is now unreachable.
     humanURL: https://github.com/timbiles/Breaking-Bad--API
     baseURL: https://www.breakingbadapi.com/api
     tags:
@@ -90,18 +86,6 @@ apis:
       - type: Examples
         title: Random Death Example
         url: examples/breaking-bad-getrandomdeath-example.json
-      - type: NaftikoCapability
-        title: Characters
-        url: capabilities/breaking-bad-characters.yaml
-      - type: NaftikoCapability
-        title: Quotes
-        url: capabilities/breaking-bad-quotes.yaml
-      - type: NaftikoCapability
-        title: Episodes
-        url: capabilities/breaking-bad-episodes.yaml
-      - type: NaftikoCapability
-        title: Deaths
-        url: capabilities/breaking-bad-deaths.yaml
 common:
   - type: Website
     url: https://github.com/timbiles/Breaking-Bad--API
@@ -129,7 +113,9 @@ features:
   - name: Random Sampling
     description: Dedicated /random endpoints for characters, quotes, and deaths.
   - name: Series Filtering
-    description: Episodes and characters can be filtered by Breaking Bad vs Better Call Saul via the series/category query parameter.
+    description: >-
+      Episodes and characters can be filtered by Breaking Bad vs Better Call Saul via the series/category query
+      parameter.
   - name: On-Screen Death Catalog
     description: Unusual for a TV-show API — every on-screen death is catalogued with cause, responsible character, and last words.
 useCases:
