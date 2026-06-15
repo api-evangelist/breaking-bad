@@ -1,0 +1,1265 @@
+{
+  "item": [
+    {
+      "id": "3e0c12b3-653e-446f-847f-616addfa940b",
+      "name": "Characters",
+      "description": {
+        "content": "Characters from the Breaking Bad and Better Call Saul universe.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2089efc3-43e1-4377-8700-d2a4ee0b33c4",
+          "name": "List Characters",
+          "request": {
+            "name": "List Characters",
+            "description": {
+              "content": "Returns a list of every character from the Breaking Bad and Better Call Saul universe.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "characters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of characters to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Number of characters to skip before starting to collect the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter characters by full name. Use `+` for spaces (e.g. `Walter+White`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by series — `Breaking+Bad`, `Better+Call+Saul`, or both joined by `,`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1b143288-8ffb-45f6-95b5-85f049f86f49",
+              "name": "Array of character records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Walter+White"
+                    },
+                    {
+                      "key": "category",
+                      "value": "Breaking+Bad,Better+Call+Saul"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"char_id\": 1,\n    \"name\": \"Walter White\",\n    \"birthday\": \"09-07-1958\",\n    \"occupation\": [\n      \"High School Chemistry Teacher\",\n      \"Meth King Pin\"\n    ],\n    \"img\": \"https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg\",\n    \"status\": \"Presumed dead\",\n    \"nickname\": \"Heisenberg\",\n    \"appearance\": [\n      1,\n      2,\n      3,\n      4,\n      5\n    ],\n    \"portrayed\": \"Bryan Cranston\",\n    \"category\": \"Breaking Bad\",\n    \"better_call_saul_appearance\": []\n  },\n  {\n    \"char_id\": 2,\n    \"name\": \"Jesse Pinkman\",\n    \"birthday\": \"09-24-1984\",\n    \"occupation\": [\n      \"Methamphetamine Manufacturer\",\n      \"Distributor\"\n    ],\n    \"img\": \"https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_jesse-pinkman-lg.jpg\",\n    \"status\": \"Alive\",\n    \"nickname\": \"Cap n' Cook\",\n    \"appearance\": [\n      1,\n      2,\n      3,\n      4,\n      5\n    ],\n    \"portrayed\": \"Aaron Paul\",\n    \"category\": \"Breaking Bad\",\n    \"better_call_saul_appearance\": []\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2da9b0de-f3b4-44ff-b502-9b4c7376d5de",
+              "name": "Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Walter+White"
+                    },
+                    {
+                      "key": "category",
+                      "value": "Breaking+Bad,Better+Call+Saul"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Try again in 24 hours.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "99caa199-5cbd-4831-b86d-ffd2e8d5cc64",
+          "name": "Get Character By Id",
+          "request": {
+            "name": "Get Character By Id",
+            "description": {
+              "content": "Returns a single character by numeric id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "characters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric character id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dec72627-389a-4d56-8c35-2b0b954f7e34",
+              "name": "Character record (array with a single element, as returned by the upstream service).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric character id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"char_id\": 1,\n    \"name\": \"Walter White\",\n    \"birthday\": \"09-07-1958\",\n    \"occupation\": [\n      \"High School Chemistry Teacher\",\n      \"Meth King Pin\"\n    ],\n    \"img\": \"https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg\",\n    \"status\": \"Presumed dead\",\n    \"nickname\": \"Heisenberg\",\n    \"appearance\": [\n      1,\n      2,\n      3,\n      4,\n      5\n    ],\n    \"portrayed\": \"Bryan Cranston\",\n    \"category\": \"Breaking Bad\",\n    \"better_call_saul_appearance\": []\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d68ed83c-c3fd-461b-9889-2f6ae730108e",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric character id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "febb0b62-4b40-4288-9be9-7fd51fbbd833",
+          "name": "Get Random Character",
+          "request": {
+            "name": "Get Random Character",
+            "description": {
+              "content": "Returns one randomly selected character.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "character",
+                "random"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6df6b36b-4294-4346-b371-943e8840e7b2",
+              "name": "One character record, wrapped in an array.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "character",
+                    "random"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"char_id\": 17,\n    \"name\": \"Saul Goodman\",\n    \"birthday\": \"11-12-1960\",\n    \"occupation\": [\n      \"Lawyer\"\n    ],\n    \"img\": \"https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_saul-goodman-lg.jpg\",\n    \"status\": \"Alive\",\n    \"nickname\": \"Slippin' Jimmy\",\n    \"appearance\": [\n      2,\n      3,\n      4,\n      5\n    ],\n    \"portrayed\": \"Bob Odenkirk\",\n    \"category\": \"Breaking Bad, Better Call Saul\",\n    \"better_call_saul_appearance\": [\n      1,\n      2,\n      3,\n      4,\n      5,\n      6\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e6bb2497-149f-4a4d-97e5-239080387f5d",
+      "name": "Quotes",
+      "description": {
+        "content": "Memorable quotes attributed to characters.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f9577d3d-f9fb-42e5-9c61-71fdb33dccff",
+          "name": "List Quotes",
+          "request": {
+            "name": "List Quotes",
+            "description": {
+              "content": "Returns every catalogued quote across the series.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quotes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c56c5ac3-7200-45e8-9ee2-a88902a39611",
+              "name": "Array of quote records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"quote_id\": 1,\n    \"quote\": \"I am not in danger, Skyler. I am the danger.\",\n    \"author\": \"Walter White\",\n    \"series\": \"Breaking Bad\"\n  },\n  {\n    \"quote_id\": 2,\n    \"quote\": \"Yeah Mr. White! Yeah Science!\",\n    \"author\": \"Jesse Pinkman\",\n    \"series\": \"Breaking Bad\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c4dab95-8761-4f43-9bcc-b7636d7f7458",
+              "name": "Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Try again in 24 hours.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a4da2fa-635f-4c75-ba74-857c40082434",
+          "name": "Get Quote By Id",
+          "request": {
+            "name": "Get Quote By Id",
+            "description": {
+              "content": "Returns one quote by numeric id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quotes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric quote id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "af01b6ab-cb1c-4a1b-b41b-02fddd57d747",
+              "name": "Quote record, wrapped in an array.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric quote id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"quote_id\": 1,\n    \"quote\": \"I am not in danger, Skyler. I am the danger.\",\n    \"author\": \"Walter White\",\n    \"series\": \"Breaking Bad\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d265627-45b9-4c30-b820-4897b0a00a41",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quotes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric quote id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "181c4175-f9d4-496b-b345-e76cbdceadd4",
+          "name": "Get Random Quote",
+          "request": {
+            "name": "Get Random Quote",
+            "description": {
+              "content": "Returns one randomly selected quote, optionally filtered by author.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "quote",
+                "random"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "author",
+                  "value": "<string>",
+                  "description": "Filter random selection by author. Use `+` for spaces (e.g. `Jesse+Pinkman`)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b4ba9d0a-a24a-47b8-8140-ce2e254ece07",
+              "name": "One quote record, wrapped in an array.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "quote",
+                    "random"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "author",
+                      "value": "Jesse+Pinkman"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"quote_id\": 5,\n    \"quote\": \"You either run from things, or you face them, Mr. White.\",\n    \"author\": \"Jesse Pinkman\",\n    \"series\": \"Breaking Bad\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f2093613-b761-4d29-aaec-92583b77e130",
+      "name": "Episodes",
+      "description": {
+        "content": "Episodes from the Breaking Bad and Better Call Saul series.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ba9af4bf-9075-45e8-a4f8-efe4c8e1aa97",
+          "name": "List Episodes",
+          "request": {
+            "name": "List Episodes",
+            "description": {
+              "content": "Returns every episode across Breaking Bad and Better Call Saul.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "episodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "series",
+                  "value": "<string>",
+                  "description": "Filter episodes by series — `Breaking+Bad` or `Better+Call+Saul`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ff7cb098-9f61-4986-b3f0-5e444e9f4bdf",
+              "name": "Array of episode records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "series",
+                      "value": "Breaking+Bad"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"episode_id\": 1,\n    \"title\": \"Pilot\",\n    \"season\": \"1\",\n    \"air_date\": \"01-20-2008\",\n    \"characters\": [\n      \"Walter White\",\n      \"Jesse Pinkman\",\n      \"Skyler White\",\n      \"Hank Schrader\",\n      \"Marie Schrader\",\n      \"Walter White Jr.\"\n    ],\n    \"episode\": \"1\",\n    \"series\": \"Breaking Bad\"\n  },\n  {\n    \"episode_id\": 62,\n    \"title\": \"Felina\",\n    \"season\": \"5\",\n    \"air_date\": \"09-29-2013\",\n    \"characters\": [\n      \"Walter White\",\n      \"Jesse Pinkman\",\n      \"Skyler White\",\n      \"Lydia Rodarte-Quayle\",\n      \"Todd Alquist\"\n    ],\n    \"episode\": \"16\",\n    \"series\": \"Breaking Bad\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8124e0be-c57b-4d4d-89df-282331df8e21",
+              "name": "Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "series",
+                      "value": "Breaking+Bad"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Try again in 24 hours.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3cc0d0f4-6af5-4b6f-9361-7debbf4f1d6b",
+          "name": "Get Episode By Id",
+          "request": {
+            "name": "Get Episode By Id",
+            "description": {
+              "content": "Returns one episode by numeric id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "episodes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric episode id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "953674c2-17c1-4274-90e6-60c0e7e92413",
+              "name": "Episode record, wrapped in an array.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "episodes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric episode id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"episode_id\": 1,\n    \"title\": \"Pilot\",\n    \"season\": \"1\",\n    \"air_date\": \"01-20-2008\",\n    \"characters\": [\n      \"Walter White\",\n      \"Jesse Pinkman\",\n      \"Skyler White\",\n      \"Hank Schrader\"\n    ],\n    \"episode\": \"1\",\n    \"series\": \"Breaking Bad\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "561b3146-e5eb-40bc-91d1-794cf1869b38",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "episodes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric episode id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "f1a85efd-0654-4535-b9a6-30005b09b92e",
+      "name": "Deaths",
+      "description": {
+        "content": "On-screen deaths catalogued across the series.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "52cec12f-f76c-47ee-b812-615c9b594037",
+          "name": "List Deaths",
+          "request": {
+            "name": "List Deaths",
+            "description": {
+              "content": "Returns every catalogued on-screen death across the series.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deaths"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c780213-df3d-4d1d-bc0a-0d185a5df2f9",
+              "name": "Array of death records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deaths"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"death_id\": 1,\n    \"death\": \"Emilio Koyama\",\n    \"cause\": \"Poison Gas\",\n    \"responsible\": \"Walter White\",\n    \"last_words\": \"No, please!\",\n    \"season\": 1,\n    \"episode\": 1,\n    \"number_of_deaths\": 1\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88cdd569-3d43-40f1-acf5-15849092f559",
+              "name": "Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deaths"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Try again in 24 hours.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19876ede-0189-41fe-83e2-b19df3823134",
+          "name": "Get Death Count",
+          "request": {
+            "name": "Get Death Count",
+            "description": {
+              "content": "Returns the total number of catalogued deaths, optionally filtered by the character responsible.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "death-count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter the count by the character responsible for the deaths."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "79a1825b-966c-49aa-b9f2-e8dcfd0d72cd",
+              "name": "Integer death count.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "death-count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "Gustavo+Fring"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "270",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bbefeccd-23ba-47a0-ac2e-9fd35357d492",
+          "name": "Get Random Death",
+          "request": {
+            "name": "Get Random Death",
+            "description": {
+              "content": "Returns one randomly selected on-screen death.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "random-death"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1bb866ae-4554-487d-99dd-981e80125574",
+              "name": "One death record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "random-death"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"death_id\": 14,\n  \"death\": \"Tortuga\",\n  \"cause\": \"Decapitation\",\n  \"responsible\": \"The Cousins\",\n  \"last_words\": \"Unknown\",\n  \"season\": 2,\n  \"episode\": 7,\n  \"number_of_deaths\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.breakingbadapi.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a425d826-6259-4810-aade-dc4de1e69219",
+    "name": "Breaking Bad API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe. The original upstream provider (breakingbadapi.com) is no longer reachable as of 2026 — DNS resolution fails and the documentation site at https://breakingbadapi.com/documentation returns no response. This OpenAPI document is preserved as a historical record of the API's documented contract, drawn from the canonical source repository at github.com/timbiles/Breaking-Bad--API and from archived community documentation (drangovski.github.io, mridul.tech/breaking-bad-api).\n\nContact Support:\n Name: Tim Biles (original maintainer)",
+      "type": "text/plain"
+    }
+  }
+}

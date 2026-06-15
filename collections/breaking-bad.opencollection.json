@@ -1,0 +1,237 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Breaking Bad API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Characters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Characters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/characters",
+            "params": [
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Maximum number of characters to return."
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query",
+                "description": "Number of characters to skip before starting to collect the result set."
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter characters by full name. Use `+` for spaces (e.g. `Walter+White`)."
+              },
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter by series — `Breaking+Bad`, `Better+Call+Saul`, or both joined by `,`."
+              }
+            ]
+          },
+          "docs": "Returns a list of every character from the Breaking Bad and Better Call Saul universe."
+        },
+        {
+          "info": {
+            "name": "Get Character By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/characters/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric character id."
+              }
+            ]
+          },
+          "docs": "Returns a single character by numeric id."
+        },
+        {
+          "info": {
+            "name": "Get Random Character",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/character/random"
+          },
+          "docs": "Returns one randomly selected character."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Quotes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/quotes"
+          },
+          "docs": "Returns every catalogued quote across the series."
+        },
+        {
+          "info": {
+            "name": "Get Quote By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/quotes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric quote id."
+              }
+            ]
+          },
+          "docs": "Returns one quote by numeric id."
+        },
+        {
+          "info": {
+            "name": "Get Random Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/quote/random",
+            "params": [
+              {
+                "name": "author",
+                "value": "",
+                "type": "query",
+                "description": "Filter random selection by author. Use `+` for spaces (e.g. `Jesse+Pinkman`)."
+              }
+            ]
+          },
+          "docs": "Returns one randomly selected quote, optionally filtered by author."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Episodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Episodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/episodes",
+            "params": [
+              {
+                "name": "series",
+                "value": "",
+                "type": "query",
+                "description": "Filter episodes by series — `Breaking+Bad` or `Better+Call+Saul`."
+              }
+            ]
+          },
+          "docs": "Returns every episode across Breaking Bad and Better Call Saul."
+        },
+        {
+          "info": {
+            "name": "Get Episode By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/episodes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric episode id."
+              }
+            ]
+          },
+          "docs": "Returns one episode by numeric id."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Deaths",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Deaths",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/deaths"
+          },
+          "docs": "Returns every catalogued on-screen death across the series."
+        },
+        {
+          "info": {
+            "name": "Get Death Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/death-count",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter the count by the character responsible for the deaths."
+              }
+            ]
+          },
+          "docs": "Returns the total number of catalogued deaths, optionally filtered by the character responsible."
+        },
+        {
+          "info": {
+            "name": "Get Random Death",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/random-death"
+          },
+          "docs": "Returns one randomly selected on-screen death."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
