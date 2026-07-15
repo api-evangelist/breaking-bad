@@ -87,6 +87,8 @@ apis:
         title: Random Death Example
         url: examples/breaking-bad-getrandomdeath-example.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/breaking-bad-agentic-access.yml
   - type: Website
     url: https://github.com/timbiles/Breaking-Bad--API
   - type: SourceCode
