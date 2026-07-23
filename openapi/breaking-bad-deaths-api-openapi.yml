@@ -1,0 +1,178 @@
+openapi: 3.0.3
+info:
+  title: Breaking Bad Characters Deaths API
+  description: Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe. The original upstream provider (breakingbadapi.com) is no longer reachable as of 2026 — DNS resolution fails and the documentation site at https://breakingbadapi.com/documentation returns no response. This OpenAPI document is preserved as a historical record of the API's documented contract, drawn from the canonical source repository at github.com/timbiles/Breaking-Bad--API and from archived community documentation (drangovski.github.io, mridul.tech/breaking-bad-api).
+  version: 1.0.0
+  contact:
+    name: Tim Biles (original maintainer)
+    url: https://github.com/timbiles/Breaking-Bad--API
+  license:
+    name: BSD-3-Clause
+    url: https://github.com/timbiles/Breaking-Bad--API/blob/master/LICENSE.rst
+  x-generated-from: documentation
+  x-last-validated: '2026-05-29'
+  x-status: deprecated
+  x-deprecation-note: The hosted service at breakingbadapi.com is unreachable as of 2026-05-29 (DNS does not resolve). Schema and operations are preserved here for historical reference and to support nostalgic/educational re-implementations.
+servers:
+- url: https://www.breakingbadapi.com/api
+  description: Original community-hosted endpoint (unreachable as of 2026)
+tags:
+- name: Deaths
+  description: On-screen deaths catalogued across the series.
+paths:
+  /deaths:
+    get:
+      operationId: listDeaths
+      summary: List Deaths
+      description: Returns every catalogued on-screen death across the series.
+      tags:
+      - Deaths
+      responses:
+        '200':
+          description: Array of death records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Death'
+              examples:
+                ListDeaths200Example:
+                  summary: Default listDeaths 200 response
+                  x-microcks-default: true
+                  value:
+                  - death_id: 1
+                    death: Emilio Koyama
+                    cause: Poison Gas
+                    responsible: Walter White
+                    last_words: No, please!
+                    season: 1
+                    episode: 1
+                    number_of_deaths: 1
+        '429':
+          $ref: '#/components/responses/RateLimited'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /death-count:
+    get:
+      operationId: getDeathCount
+      summary: Get Death Count
+      description: Returns the total number of catalogued deaths, optionally filtered by the character responsible.
+      tags:
+      - Deaths
+      parameters:
+      - name: name
+        in: query
+        description: Filter the count by the character responsible for the deaths.
+        required: false
+        schema:
+          type: string
+          example: Gustavo+Fring
+      responses:
+        '200':
+          description: Integer death count.
+          content:
+            application/json:
+              schema:
+                type: integer
+                example: 270
+              examples:
+                GetDeathCount200Example:
+                  summary: Default getDeathCount 200 response
+                  x-microcks-default: true
+                  value: 270
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /random-death:
+    get:
+      operationId: getRandomDeath
+      summary: Get Random Death
+      description: Returns one randomly selected on-screen death.
+      tags:
+      - Deaths
+      responses:
+        '200':
+          description: One death record.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Death'
+              examples:
+                GetRandomDeath200Example:
+                  summary: Default getRandomDeath 200 response
+                  x-microcks-default: true
+                  value:
+                    death_id: 14
+                    death: Tortuga
+                    cause: Decapitation
+                    responsible: The Cousins
+                    last_words: Unknown
+                    season: 2
+                    episode: 7
+                    number_of_deaths: 1
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Death:
+      type: object
+      description: A catalogued on-screen death from the series.
+      x-schema-source: documentation
+      x-source-url: https://github.com/timbiles/Breaking-Bad--API
+      properties:
+        death_id:
+          type: integer
+          description: Unique numeric id for the death record.
+          example: 1
+        death:
+          type: string
+          description: The name of the character who died.
+          example: Emilio Koyama
+        cause:
+          type: string
+          description: How the character died.
+          example: Poison Gas
+        responsible:
+          type: string
+          description: Character responsible for the death.
+          example: Walter White
+        last_words:
+          type: string
+          description: The character's documented last words.
+          example: No, please!
+        season:
+          type: integer
+          description: Season the death occurred in.
+          example: 1
+        episode:
+          type: integer
+          description: Episode the death occurred in.
+          example: 1
+        number_of_deaths:
+          type: integer
+          description: Number of deaths attributed to this single record.
+          example: 1
+    Error:
+      type: object
+      description: Generic error envelope.
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Not Found
+  responses:
+    RateLimited:
+      description: Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            RateLimitedExample:
+              summary: Default 429 response
+              x-microcks-default: true
+              value:
+                message: Rate limit exceeded. Try again in 24 hours.

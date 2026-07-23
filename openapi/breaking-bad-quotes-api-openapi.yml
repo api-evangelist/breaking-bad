@@ -1,0 +1,187 @@
+openapi: 3.0.3
+info:
+  title: Breaking Bad Characters Quotes API
+  description: Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe. The original upstream provider (breakingbadapi.com) is no longer reachable as of 2026 — DNS resolution fails and the documentation site at https://breakingbadapi.com/documentation returns no response. This OpenAPI document is preserved as a historical record of the API's documented contract, drawn from the canonical source repository at github.com/timbiles/Breaking-Bad--API and from archived community documentation (drangovski.github.io, mridul.tech/breaking-bad-api).
+  version: 1.0.0
+  contact:
+    name: Tim Biles (original maintainer)
+    url: https://github.com/timbiles/Breaking-Bad--API
+  license:
+    name: BSD-3-Clause
+    url: https://github.com/timbiles/Breaking-Bad--API/blob/master/LICENSE.rst
+  x-generated-from: documentation
+  x-last-validated: '2026-05-29'
+  x-status: deprecated
+  x-deprecation-note: The hosted service at breakingbadapi.com is unreachable as of 2026-05-29 (DNS does not resolve). Schema and operations are preserved here for historical reference and to support nostalgic/educational re-implementations.
+servers:
+- url: https://www.breakingbadapi.com/api
+  description: Original community-hosted endpoint (unreachable as of 2026)
+tags:
+- name: Quotes
+  description: Memorable quotes attributed to characters.
+paths:
+  /quotes:
+    get:
+      operationId: listQuotes
+      summary: List Quotes
+      description: Returns every catalogued quote across the series.
+      tags:
+      - Quotes
+      responses:
+        '200':
+          description: Array of quote records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Quote'
+              examples:
+                ListQuotes200Example:
+                  summary: Default listQuotes 200 response
+                  x-microcks-default: true
+                  value:
+                  - quote_id: 1
+                    quote: I am not in danger, Skyler. I am the danger.
+                    author: Walter White
+                    series: Breaking Bad
+                  - quote_id: 2
+                    quote: Yeah Mr. White! Yeah Science!
+                    author: Jesse Pinkman
+                    series: Breaking Bad
+        '429':
+          $ref: '#/components/responses/RateLimited'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /quotes/{id}:
+    get:
+      operationId: getQuoteById
+      summary: Get Quote By Id
+      description: Returns one quote by numeric id.
+      tags:
+      - Quotes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Numeric quote id.
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: Quote record, wrapped in an array.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Quote'
+              examples:
+                GetQuoteById200Example:
+                  summary: Default getQuoteById 200 response
+                  x-microcks-default: true
+                  value:
+                  - quote_id: 1
+                    quote: I am not in danger, Skyler. I am the danger.
+                    author: Walter White
+                    series: Breaking Bad
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /quote/random:
+    get:
+      operationId: getRandomQuote
+      summary: Get Random Quote
+      description: Returns one randomly selected quote, optionally filtered by author.
+      tags:
+      - Quotes
+      parameters:
+      - name: author
+        in: query
+        description: Filter random selection by author. Use `+` for spaces (e.g. `Jesse+Pinkman`).
+        required: false
+        schema:
+          type: string
+          example: Jesse+Pinkman
+      responses:
+        '200':
+          description: One quote record, wrapped in an array.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Quote'
+              examples:
+                GetRandomQuote200Example:
+                  summary: Default getRandomQuote 200 response
+                  x-microcks-default: true
+                  value:
+                  - quote_id: 5
+                    quote: You either run from things, or you face them, Mr. White.
+                    author: Jesse Pinkman
+                    series: Breaking Bad
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            NotFoundExample:
+              summary: Default 404 response
+              x-microcks-default: true
+              value:
+                message: Not Found
+    RateLimited:
+      description: Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            RateLimitedExample:
+              summary: Default 429 response
+              x-microcks-default: true
+              value:
+                message: Rate limit exceeded. Try again in 24 hours.
+  schemas:
+    Error:
+      type: object
+      description: Generic error envelope.
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Not Found
+    Quote:
+      type: object
+      description: A memorable quote attributed to a character.
+      x-schema-source: documentation
+      x-source-url: https://github.com/timbiles/Breaking-Bad--API
+      properties:
+        quote_id:
+          type: integer
+          description: Unique numeric id for the quote.
+          example: 1
+        quote:
+          type: string
+          description: The text of the quote.
+          example: I am not in danger, Skyler. I am the danger.
+        author:
+          type: string
+          description: The character credited with the quote.
+          example: Walter White
+        series:
+          type: string
+          description: The series the quote originated from.
+          example: Breaking Bad

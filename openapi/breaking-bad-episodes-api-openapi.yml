@@ -1,0 +1,199 @@
+openapi: 3.0.3
+info:
+  title: Breaking Bad Characters Episodes API
+  description: Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe. The original upstream provider (breakingbadapi.com) is no longer reachable as of 2026 — DNS resolution fails and the documentation site at https://breakingbadapi.com/documentation returns no response. This OpenAPI document is preserved as a historical record of the API's documented contract, drawn from the canonical source repository at github.com/timbiles/Breaking-Bad--API and from archived community documentation (drangovski.github.io, mridul.tech/breaking-bad-api).
+  version: 1.0.0
+  contact:
+    name: Tim Biles (original maintainer)
+    url: https://github.com/timbiles/Breaking-Bad--API
+  license:
+    name: BSD-3-Clause
+    url: https://github.com/timbiles/Breaking-Bad--API/blob/master/LICENSE.rst
+  x-generated-from: documentation
+  x-last-validated: '2026-05-29'
+  x-status: deprecated
+  x-deprecation-note: The hosted service at breakingbadapi.com is unreachable as of 2026-05-29 (DNS does not resolve). Schema and operations are preserved here for historical reference and to support nostalgic/educational re-implementations.
+servers:
+- url: https://www.breakingbadapi.com/api
+  description: Original community-hosted endpoint (unreachable as of 2026)
+tags:
+- name: Episodes
+  description: Episodes from the Breaking Bad and Better Call Saul series.
+paths:
+  /episodes:
+    get:
+      operationId: listEpisodes
+      summary: List Episodes
+      description: Returns every episode across Breaking Bad and Better Call Saul.
+      tags:
+      - Episodes
+      parameters:
+      - name: series
+        in: query
+        description: Filter episodes by series — `Breaking+Bad` or `Better+Call+Saul`.
+        required: false
+        schema:
+          type: string
+          example: Breaking+Bad
+      responses:
+        '200':
+          description: Array of episode records.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Episode'
+              examples:
+                ListEpisodes200Example:
+                  summary: Default listEpisodes 200 response
+                  x-microcks-default: true
+                  value:
+                  - episode_id: 1
+                    title: Pilot
+                    season: '1'
+                    air_date: 01-20-2008
+                    characters:
+                    - Walter White
+                    - Jesse Pinkman
+                    - Skyler White
+                    - Hank Schrader
+                    - Marie Schrader
+                    - Walter White Jr.
+                    episode: '1'
+                    series: Breaking Bad
+                  - episode_id: 62
+                    title: Felina
+                    season: '5'
+                    air_date: 09-29-2013
+                    characters:
+                    - Walter White
+                    - Jesse Pinkman
+                    - Skyler White
+                    - Lydia Rodarte-Quayle
+                    - Todd Alquist
+                    episode: '16'
+                    series: Breaking Bad
+        '429':
+          $ref: '#/components/responses/RateLimited'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /episodes/{id}:
+    get:
+      operationId: getEpisodeById
+      summary: Get Episode By Id
+      description: Returns one episode by numeric id.
+      tags:
+      - Episodes
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Numeric episode id.
+        schema:
+          type: integer
+          example: 1
+      responses:
+        '200':
+          description: Episode record, wrapped in an array.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Episode'
+              examples:
+                GetEpisodeById200Example:
+                  summary: Default getEpisodeById 200 response
+                  x-microcks-default: true
+                  value:
+                  - episode_id: 1
+                    title: Pilot
+                    season: '1'
+                    air_date: 01-20-2008
+                    characters:
+                    - Walter White
+                    - Jesse Pinkman
+                    - Skyler White
+                    - Hank Schrader
+                    episode: '1'
+                    series: Breaking Bad
+        '404':
+          $ref: '#/components/responses/NotFound'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Episode:
+      type: object
+      description: An episode of Breaking Bad or Better Call Saul.
+      x-schema-source: documentation
+      x-source-url: https://github.com/timbiles/Breaking-Bad--API
+      properties:
+        episode_id:
+          type: integer
+          description: Unique numeric id for the episode.
+          example: 1
+        title:
+          type: string
+          description: Episode title.
+          example: Pilot
+        season:
+          type: string
+          description: Season number as a string (zero-padded by upstream).
+          example: '1'
+        air_date:
+          type: string
+          description: Original air date in M-D-YYYY format.
+          example: 01-20-2008
+        characters:
+          type: array
+          description: Characters appearing in the episode.
+          items:
+            type: string
+          example:
+          - Walter White
+          - Jesse Pinkman
+        episode:
+          type: string
+          description: Episode number within the season (zero-padded by upstream).
+          example: '1'
+        series:
+          type: string
+          description: Series the episode belongs to — `Breaking Bad` or `Better Call Saul`.
+          example: Breaking Bad
+    Error:
+      type: object
+      description: Generic error envelope.
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Not Found
+  responses:
+    RateLimited:
+      description: Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            RateLimitedExample:
+              summary: Default 429 response
+              x-microcks-default: true
+              value:
+                message: Rate limit exceeded. Try again in 24 hours.
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            NotFoundExample:
+              summary: Default 404 response
+              x-microcks-default: true
+              value:
+                message: Not Found
