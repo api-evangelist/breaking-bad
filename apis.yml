@@ -6,6 +6,17 @@ description: >-
   2026-05-29 (DNS does not resolve). The canonical source code remains at github.com/timbiles/Breaking-Bad--API under
   BSD-3-Clause and is the basis for the historical OpenAPI and capability artifacts in this repo.
 url: https://github.com/timbiles/Breaking-Bad--API
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source: []
+  generated: '2026-07-22'
+  method: derived
 image: https://github.com/timbiles/Breaking-Bad--API/raw/master/public/favicon.ico
 specificationVersion: '0.20'
 created: '2026-05-28'
@@ -30,62 +41,158 @@ tags:
   - Pop Culture
   - Deprecated
 apis:
-  - name: Breaking Bad API
-    description: >-
-      REST API for Breaking Bad and Better Call Saul data — characters, quotes, episodes, and deaths. Anonymous access
-      (no API key). The original hosted service enforced 10,000 requests per IP per day and is now unreachable.
-    humanURL: https://github.com/timbiles/Breaking-Bad--API
-    baseURL: https://www.breakingbadapi.com/api
-    tags:
-      - Video
-      - Television
-      - Characters
-      - Quotes
-      - Episodes
-      - Deaths
-    properties:
-      - type: Documentation
-        url: https://github.com/timbiles/Breaking-Bad--API#readme
-      - type: SourceCode
-        url: https://github.com/timbiles/Breaking-Bad--API
-      - type: OpenAPI
-        url: openapi/breaking-bad-openapi.yml
-      - type: JSONSchema
-        title: Character Schema
-        url: json-schema/breaking-bad-character-schema.json
-      - type: JSONSchema
-        title: Quote Schema
-        url: json-schema/breaking-bad-quote-schema.json
-      - type: JSONSchema
-        title: Episode Schema
-        url: json-schema/breaking-bad-episode-schema.json
-      - type: JSONSchema
-        title: Death Schema
-        url: json-schema/breaking-bad-death-schema.json
-      - type: JSONStructure
-        title: Character Structure
-        url: json-structure/breaking-bad-character-structure.json
-      - type: JSONStructure
-        title: Quote Structure
-        url: json-structure/breaking-bad-quote-structure.json
-      - type: JSONStructure
-        title: Episode Structure
-        url: json-structure/breaking-bad-episode-structure.json
-      - type: JSONStructure
-        title: Death Structure
-        url: json-structure/breaking-bad-death-structure.json
-      - type: Examples
-        title: List Characters Example
-        url: examples/breaking-bad-listcharacters-example.json
-      - type: Examples
-        title: Random Quote Example
-        url: examples/breaking-bad-getrandomquote-example.json
-      - type: Examples
-        title: List Episodes Example
-        url: examples/breaking-bad-listepisodes-example.json
-      - type: Examples
-        title: Random Death Example
-        url: examples/breaking-bad-getrandomdeath-example.json
+- aid: breaking-bad:breaking-bad-characters-api
+  name: Breaking Bad Characters API
+  description: Characters from the Breaking Bad and Better Call Saul universe.
+  humanURL: https://github.com/timbiles/Breaking-Bad--API
+  baseURL: https://www.breakingbadapi.com/api
+  tags:
+  - Characters
+  properties:
+  - type: OpenAPI
+    url: openapi/breaking-bad-characters-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/timbiles/Breaking-Bad--API#readme
+  - type: SourceCode
+    url: https://github.com/timbiles/Breaking-Bad--API
+  - type: JSONSchema
+    url: json-schema/breaking-bad-character-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-quote-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-death-schema.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-character-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-quote-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-episode-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-death-structure.json
+  - type: Examples
+    url: examples/breaking-bad-listcharacters-example.json
+  - type: Examples
+    url: examples/breaking-bad-getrandomquote-example.json
+  - type: Examples
+    url: examples/breaking-bad-listepisodes-example.json
+  - type: Examples
+    url: examples/breaking-bad-getrandomdeath-example.json
+- aid: breaking-bad:breaking-bad-deaths-api
+  name: Breaking Bad Deaths API
+  description: On-screen deaths catalogued across the series.
+  humanURL: https://github.com/timbiles/Breaking-Bad--API
+  baseURL: https://www.breakingbadapi.com/api
+  tags:
+  - Deaths
+  properties:
+  - type: OpenAPI
+    url: openapi/breaking-bad-deaths-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/timbiles/Breaking-Bad--API#readme
+  - type: SourceCode
+    url: https://github.com/timbiles/Breaking-Bad--API
+  - type: JSONSchema
+    url: json-schema/breaking-bad-character-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-quote-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-death-schema.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-character-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-quote-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-episode-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-death-structure.json
+  - type: Examples
+    url: examples/breaking-bad-listcharacters-example.json
+  - type: Examples
+    url: examples/breaking-bad-getrandomquote-example.json
+  - type: Examples
+    url: examples/breaking-bad-listepisodes-example.json
+  - type: Examples
+    url: examples/breaking-bad-getrandomdeath-example.json
+- aid: breaking-bad:breaking-bad-episodes-api
+  name: Breaking Bad Episodes API
+  description: Episodes from the Breaking Bad and Better Call Saul series.
+  humanURL: https://github.com/timbiles/Breaking-Bad--API
+  baseURL: https://www.breakingbadapi.com/api
+  tags:
+  - Episodes
+  properties:
+  - type: OpenAPI
+    url: openapi/breaking-bad-episodes-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/timbiles/Breaking-Bad--API#readme
+  - type: SourceCode
+    url: https://github.com/timbiles/Breaking-Bad--API
+  - type: JSONSchema
+    url: json-schema/breaking-bad-character-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-quote-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-death-schema.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-character-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-quote-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-episode-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-death-structure.json
+  - type: Examples
+    url: examples/breaking-bad-listcharacters-example.json
+  - type: Examples
+    url: examples/breaking-bad-getrandomquote-example.json
+  - type: Examples
+    url: examples/breaking-bad-listepisodes-example.json
+  - type: Examples
+    url: examples/breaking-bad-getrandomdeath-example.json
+- aid: breaking-bad:breaking-bad-quotes-api
+  name: Breaking Bad Quotes API
+  description: Memorable quotes attributed to characters.
+  humanURL: https://github.com/timbiles/Breaking-Bad--API
+  baseURL: https://www.breakingbadapi.com/api
+  tags:
+  - Quotes
+  properties:
+  - type: OpenAPI
+    url: openapi/breaking-bad-quotes-api-openapi.yml
+  - type: Documentation
+    url: https://github.com/timbiles/Breaking-Bad--API#readme
+  - type: SourceCode
+    url: https://github.com/timbiles/Breaking-Bad--API
+  - type: JSONSchema
+    url: json-schema/breaking-bad-character-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-quote-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-episode-schema.json
+  - type: JSONSchema
+    url: json-schema/breaking-bad-death-schema.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-character-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-quote-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-episode-structure.json
+  - type: JSONStructure
+    url: json-structure/breaking-bad-death-structure.json
+  - type: Examples
+    url: examples/breaking-bad-listcharacters-example.json
+  - type: Examples
+    url: examples/breaking-bad-getrandomquote-example.json
+  - type: Examples
+    url: examples/breaking-bad-listepisodes-example.json
+  - type: Examples
+    url: examples/breaking-bad-getrandomdeath-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/breaking-bad-agentic-access.yml
