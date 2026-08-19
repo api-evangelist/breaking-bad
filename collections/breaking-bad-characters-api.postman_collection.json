@@ -1,0 +1,400 @@
+{
+  "item": [
+    {
+      "id": "58e79db6-30b1-4424-9866-18690b07a4d6",
+      "name": "Characters",
+      "description": {
+        "content": "Characters from the Breaking Bad and Better Call Saul universe.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f5e1d48d-045d-42cb-a35c-1eb355eb04ba",
+          "name": "List Characters",
+          "request": {
+            "name": "List Characters",
+            "description": {
+              "content": "Returns a list of every character from the Breaking Bad and Better Call Saul universe.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "characters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "<integer>",
+                  "description": "Maximum number of characters to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "<integer>",
+                  "description": "Number of characters to skip before starting to collect the result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter characters by full name. Use `+` for spaces (e.g. `Walter+White`)."
+                },
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter by series — `Breaking+Bad`, `Better+Call+Saul`, or both joined by `,`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "abb5eff2-ee80-4af2-b71f-a1fe0dee1a25",
+              "name": "Array of character records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Walter+White"
+                    },
+                    {
+                      "key": "category",
+                      "value": "Breaking+Bad,Better+Call+Saul"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"char_id\": 1,\n    \"name\": \"Walter White\",\n    \"birthday\": \"09-07-1958\",\n    \"occupation\": [\n      \"High School Chemistry Teacher\",\n      \"Meth King Pin\"\n    ],\n    \"img\": \"https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg\",\n    \"status\": \"Presumed dead\",\n    \"nickname\": \"Heisenberg\",\n    \"appearance\": [\n      1,\n      2,\n      3,\n      4,\n      5\n    ],\n    \"portrayed\": \"Bryan Cranston\",\n    \"category\": \"Breaking Bad\",\n    \"better_call_saul_appearance\": []\n  },\n  {\n    \"char_id\": 2,\n    \"name\": \"Jesse Pinkman\",\n    \"birthday\": \"09-24-1984\",\n    \"occupation\": [\n      \"Methamphetamine Manufacturer\",\n      \"Distributor\"\n    ],\n    \"img\": \"https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_jesse-pinkman-lg.jpg\",\n    \"status\": \"Alive\",\n    \"nickname\": \"Cap n' Cook\",\n    \"appearance\": [\n      1,\n      2,\n      3,\n      4,\n      5\n    ],\n    \"portrayed\": \"Aaron Paul\",\n    \"category\": \"Breaking Bad\",\n    \"better_call_saul_appearance\": []\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b5f8a2d3-d34e-49f9-b807-84bdcf260219",
+              "name": "Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "name",
+                      "value": "Walter+White"
+                    },
+                    {
+                      "key": "category",
+                      "value": "Breaking+Bad,Better+Call+Saul"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Try again in 24 hours.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bea641b5-3bc6-40d4-8f35-2e4e2e5f8896",
+          "name": "Get Character By Id",
+          "request": {
+            "name": "Get Character By Id",
+            "description": {
+              "content": "Returns a single character by numeric id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "characters",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric character id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb8257ee-368c-41a1-a073-ed4b6135c16f",
+              "name": "Character record (array with a single element, as returned by the upstream service).",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric character id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"char_id\": 1,\n    \"name\": \"Walter White\",\n    \"birthday\": \"09-07-1958\",\n    \"occupation\": [\n      \"High School Chemistry Teacher\",\n      \"Meth King Pin\"\n    ],\n    \"img\": \"https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_walter-white-lg.jpg\",\n    \"status\": \"Presumed dead\",\n    \"nickname\": \"Heisenberg\",\n    \"appearance\": [\n      1,\n      2,\n      3,\n      4,\n      5\n    ],\n    \"portrayed\": \"Bryan Cranston\",\n    \"category\": \"Breaking Bad\",\n    \"better_call_saul_appearance\": []\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e3a35057-d75b-49f7-945b-e5e8c6d5fc83",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "characters",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric character id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "098d78bf-7ce3-4b62-b706-453d527f1c7b",
+          "name": "Get Random Character",
+          "request": {
+            "name": "Get Random Character",
+            "description": {
+              "content": "Returns one randomly selected character.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "character",
+                "random"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12bac0e9-13bd-4ab0-920c-6a01a927980e",
+              "name": "One character record, wrapped in an array.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "character",
+                    "random"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"char_id\": 17,\n    \"name\": \"Saul Goodman\",\n    \"birthday\": \"11-12-1960\",\n    \"occupation\": [\n      \"Lawyer\"\n    ],\n    \"img\": \"https://images.amcnetworks.com/amc.com/wp-content/uploads/2015/04/cast_bb_700x1000_saul-goodman-lg.jpg\",\n    \"status\": \"Alive\",\n    \"nickname\": \"Slippin' Jimmy\",\n    \"appearance\": [\n      2,\n      3,\n      4,\n      5\n    ],\n    \"portrayed\": \"Bob Odenkirk\",\n    \"category\": \"Breaking Bad, Better Call Saul\",\n    \"better_call_saul_appearance\": [\n      1,\n      2,\n      3,\n      4,\n      5,\n      6\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.breakingbadapi.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4fc9bd1f-29a5-4718-b182-2622865fe10b",
+    "name": "Breaking Bad Characters API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe. The original upstream provider (breakingbadapi.com) is no longer reachable as of 2026 — DNS resolution fails and the documentation site at https://breakingbadapi.com/documentation returns no response. This OpenAPI document is preserved as a historical record of the API's documented contract, drawn from the canonical source repository at github.com/timbiles/Breaking-Bad--API and from archived community documentation (drangovski.github.io, mridul.tech/breaking-bad-api).\n\nContact Support:\n Name: Tim Biles (original maintainer)",
+      "type": "text/plain"
+    }
+  }
+}

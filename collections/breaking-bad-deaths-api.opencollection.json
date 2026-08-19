@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Breaking Bad Characters Deaths API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Deaths",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Deaths",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/deaths"
+          },
+          "docs": "Returns every catalogued on-screen death across the series."
+        },
+        {
+          "info": {
+            "name": "Get Death Count",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/death-count",
+            "params": [
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter the count by the character responsible for the deaths."
+              }
+            ]
+          },
+          "docs": "Returns the total number of catalogued deaths, optionally filtered by the character responsible."
+        },
+        {
+          "info": {
+            "name": "Get Random Death",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/random-death"
+          },
+          "docs": "Returns one randomly selected on-screen death."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

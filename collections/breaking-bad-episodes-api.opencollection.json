@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Breaking Bad Characters Episodes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Episodes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Episodes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/episodes",
+            "params": [
+              {
+                "name": "series",
+                "value": "",
+                "type": "query",
+                "description": "Filter episodes by series — `Breaking+Bad` or `Better+Call+Saul`."
+              }
+            ]
+          },
+          "docs": "Returns every episode across Breaking Bad and Better Call Saul."
+        },
+        {
+          "info": {
+            "name": "Get Episode By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/episodes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric episode id."
+              }
+            ]
+          },
+          "docs": "Returns one episode by numeric id."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

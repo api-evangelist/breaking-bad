@@ -1,0 +1,289 @@
+{
+  "item": [
+    {
+      "id": "a2e18167-30aa-464e-8aa5-acffb4edcb65",
+      "name": "Deaths",
+      "description": {
+        "content": "On-screen deaths catalogued across the series.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7eec19b9-59e1-4aa3-8351-e2d5cec65d32",
+          "name": "List Deaths",
+          "request": {
+            "name": "List Deaths",
+            "description": {
+              "content": "Returns every catalogued on-screen death across the series.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "deaths"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15fce8ac-ce06-4d7e-8435-b8c4e42683b5",
+              "name": "Array of death records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deaths"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"death_id\": 1,\n    \"death\": \"Emilio Koyama\",\n    \"cause\": \"Poison Gas\",\n    \"responsible\": \"Walter White\",\n    \"last_words\": \"No, please!\",\n    \"season\": 1,\n    \"episode\": 1,\n    \"number_of_deaths\": 1\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9c9f4be3-e98c-474a-b4d7-8abea846174c",
+              "name": "Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "deaths"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Try again in 24 hours.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fce83af3-d64b-472c-826a-1e6e68c9ad17",
+          "name": "Get Death Count",
+          "request": {
+            "name": "Get Death Count",
+            "description": {
+              "content": "Returns the total number of catalogued deaths, optionally filtered by the character responsible.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "death-count"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "name",
+                  "value": "<string>",
+                  "description": "Filter the count by the character responsible for the deaths."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aea26266-7830-4b04-8613-b1314bfef029",
+              "name": "Integer death count.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "death-count"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "name",
+                      "value": "Gustavo+Fring"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "270",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e0d76749-8ec6-407f-8170-ffdd316c25f0",
+          "name": "Get Random Death",
+          "request": {
+            "name": "Get Random Death",
+            "description": {
+              "content": "Returns one randomly selected on-screen death.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "random-death"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "31a23b8f-ee29-4fbd-9e0b-82391d614a42",
+              "name": "One death record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "random-death"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"death_id\": 14,\n  \"death\": \"Tortuga\",\n  \"cause\": \"Decapitation\",\n  \"responsible\": \"The Cousins\",\n  \"last_words\": \"Unknown\",\n  \"season\": 2,\n  \"episode\": 7,\n  \"number_of_deaths\": 1\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.breakingbadapi.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7a767ce8-5633-464e-b74d-6aa58b2a3daf",
+    "name": "Breaking Bad Characters Deaths API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe. The original upstream provider (breakingbadapi.com) is no longer reachable as of 2026 — DNS resolution fails and the documentation site at https://breakingbadapi.com/documentation returns no response. This OpenAPI document is preserved as a historical record of the API's documented contract, drawn from the canonical source repository at github.com/timbiles/Breaking-Bad--API and from archived community documentation (drangovski.github.io, mridul.tech/breaking-bad-api).\n\nContact Support:\n Name: Tim Biles (original maintainer)",
+      "type": "text/plain"
+    }
+  }
+}

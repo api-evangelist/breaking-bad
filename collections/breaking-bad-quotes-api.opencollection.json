@@ -1,0 +1,67 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Breaking Bad Characters Quotes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Quotes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Quotes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/quotes"
+          },
+          "docs": "Returns every catalogued quote across the series."
+        },
+        {
+          "info": {
+            "name": "Get Quote By Id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/quotes/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Numeric quote id."
+              }
+            ]
+          },
+          "docs": "Returns one quote by numeric id."
+        },
+        {
+          "info": {
+            "name": "Get Random Quote",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.breakingbadapi.com/api/quote/random",
+            "params": [
+              {
+                "name": "author",
+                "value": "",
+                "type": "query",
+                "description": "Filter random selection by author. Use `+` for spaces (e.g. `Jesse+Pinkman`)."
+              }
+            ]
+          },
+          "docs": "Returns one randomly selected quote, optionally filtered by author."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

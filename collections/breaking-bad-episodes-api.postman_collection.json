@@ -1,0 +1,286 @@
+{
+  "item": [
+    {
+      "id": "26ed76eb-0aa3-4003-99f1-e47065f9ab55",
+      "name": "Episodes",
+      "description": {
+        "content": "Episodes from the Breaking Bad and Better Call Saul series.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b519aa9b-fb8f-4b01-91c6-47effb843933",
+          "name": "List Episodes",
+          "request": {
+            "name": "List Episodes",
+            "description": {
+              "content": "Returns every episode across Breaking Bad and Better Call Saul.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "episodes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "series",
+                  "value": "<string>",
+                  "description": "Filter episodes by series — `Breaking+Bad` or `Better+Call+Saul`."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb2e7b91-9db5-4760-a7f5-08c3bc9e98c9",
+              "name": "Array of episode records.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "series",
+                      "value": "Breaking+Bad"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"episode_id\": 1,\n    \"title\": \"Pilot\",\n    \"season\": \"1\",\n    \"air_date\": \"01-20-2008\",\n    \"characters\": [\n      \"Walter White\",\n      \"Jesse Pinkman\",\n      \"Skyler White\",\n      \"Hank Schrader\",\n      \"Marie Schrader\",\n      \"Walter White Jr.\"\n    ],\n    \"episode\": \"1\",\n    \"series\": \"Breaking Bad\"\n  },\n  {\n    \"episode_id\": 62,\n    \"title\": \"Felina\",\n    \"season\": \"5\",\n    \"air_date\": \"09-29-2013\",\n    \"characters\": [\n      \"Walter White\",\n      \"Jesse Pinkman\",\n      \"Skyler White\",\n      \"Lydia Rodarte-Quayle\",\n      \"Todd Alquist\"\n    ],\n    \"episode\": \"16\",\n    \"series\": \"Breaking Bad\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b7ce061-63fd-4825-a030-7cccb0c2ac5d",
+              "name": "Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "episodes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "series",
+                      "value": "Breaking+Bad"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Rate limit exceeded. Try again in 24 hours.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58f0fcd3-fc81-4f47-8b9d-c7ced3b76387",
+          "name": "Get Episode By Id",
+          "request": {
+            "name": "Get Episode By Id",
+            "description": {
+              "content": "Returns one episode by numeric id.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "episodes",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Numeric episode id."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c3cf5ba1-bb8f-4d07-9c93-0966843e7e21",
+              "name": "Episode record, wrapped in an array.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "episodes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric episode id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"episode_id\": 1,\n    \"title\": \"Pilot\",\n    \"season\": \"1\",\n    \"air_date\": \"01-20-2008\",\n    \"characters\": [\n      \"Walter White\",\n      \"Jesse Pinkman\",\n      \"Skyler White\",\n      \"Hank Schrader\"\n    ],\n    \"episode\": \"1\",\n    \"series\": \"Breaking Bad\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b1856a17-ac30-4ddc-9297-9e1aa1b1b37b",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "episodes",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Numeric episode id."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Not Found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.breakingbadapi.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "98b6ecf0-96dd-4287-8609-1299cbb572ba",
+    "name": "Breaking Bad Characters Episodes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe. The original upstream provider (breakingbadapi.com) is no longer reachable as of 2026 — DNS resolution fails and the documentation site at https://breakingbadapi.com/documentation returns no response. This OpenAPI document is preserved as a historical record of the API's documented contract, drawn from the canonical source repository at github.com/timbiles/Breaking-Bad--API and from archived community documentation (drangovski.github.io, mridul.tech/breaking-bad-api).\n\nContact Support:\n Name: Tim Biles (original maintainer)",
+      "type": "text/plain"
+    }
+  }
+}
