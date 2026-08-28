@@ -6,6 +6,19 @@ description: >-
   2026-05-29 (DNS does not resolve). The canonical source code remains at github.com/timbiles/Breaking-Bad--API under
   BSD-3-Clause and is the basis for the historical OpenAPI and capability artifacts in this repo.
 url: https://github.com/timbiles/Breaking-Bad--API
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: false
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: unknown
