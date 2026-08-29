@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Breaking Bad Characters Quotes API
   description: Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe. The original upstream provider (breakingbadapi.com) is no longer reachable as of 2026 — DNS resolution fails and the documentation site at https://breakingbadapi.com/documentation returns no response. This OpenAPI document is preserved as a historical record of the API's documented contract, drawn from the canonical source repository at github.com/timbiles/Breaking-Bad--API and from archived community documentation (drangovski.github.io, mridul.tech/breaking-bad-api).
@@ -129,31 +129,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          examples:
-            NotFoundExample:
-              summary: Default 404 response
-              x-microcks-default: true
-              value:
-                message: Not Found
-    RateLimited:
-      description: Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          examples:
-            RateLimitedExample:
-              summary: Default 429 response
-              x-microcks-default: true
-              value:
-                message: Rate limit exceeded. Try again in 24 hours.
   schemas:
     Error:
       type: object
@@ -185,3 +160,28 @@ components:
           type: string
           description: The series the quote originated from.
           example: Breaking Bad
+  responses:
+    RateLimited:
+      description: Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            RateLimitedExample:
+              summary: Default 429 response
+              x-microcks-default: true
+              value:
+                message: Rate limit exceeded. Try again in 24 hours.
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            NotFoundExample:
+              summary: Default 404 response
+              x-microcks-default: true
+              value:
+                message: Not Found

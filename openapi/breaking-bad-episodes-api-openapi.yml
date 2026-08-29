@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Breaking Bad Characters Episodes API
   description: Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe. The original upstream provider (breakingbadapi.com) is no longer reachable as of 2026 — DNS resolution fails and the documentation site at https://breakingbadapi.com/documentation returns no response. This OpenAPI document is preserved as a historical record of the API's documented contract, drawn from the canonical source repository at github.com/timbiles/Breaking-Bad--API and from archived community documentation (drangovski.github.io, mridul.tech/breaking-bad-api).
