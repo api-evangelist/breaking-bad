@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Breaking Bad Characters Episodes API
-  description: Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe. The original upstream provider (breakingbadapi.com) is no longer reachable as of 2026 — DNS resolution fails and the documentation site at https://breakingbadapi.com/documentation returns no response. This OpenAPI document is preserved as a historical record of the API's documented contract, drawn from the canonical source repository at github.com/timbiles/Breaking-Bad--API and from archived community documentation (drangovski.github.io, mridul.tech/breaking-bad-api).
+  title: Breaking Bad Episodes API
+  description: Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe.
   version: 1.0.0
   contact:
     name: Tim Biles (original maintainer)
@@ -125,7 +125,40 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  responses:
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            NotFoundExample:
+              summary: Default 404 response
+              x-microcks-default: true
+              value:
+                message: Not Found
+    RateLimited:
+      description: Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            RateLimitedExample:
+              summary: Default 429 response
+              x-microcks-default: true
+              value:
+                message: Rate limit exceeded. Try again in 24 hours.
   schemas:
+    Error:
+      type: object
+      description: Generic error envelope.
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Not Found
     Episode:
       type: object
       description: An episode of Breaking Bad or Better Call Saul.
@@ -164,36 +197,3 @@ components:
           type: string
           description: Series the episode belongs to — `Breaking Bad` or `Better Call Saul`.
           example: Breaking Bad
-    Error:
-      type: object
-      description: Generic error envelope.
-      properties:
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Not Found
-  responses:
-    RateLimited:
-      description: Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          examples:
-            RateLimitedExample:
-              summary: Default 429 response
-              x-microcks-default: true
-              value:
-                message: Rate limit exceeded. Try again in 24 hours.
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          examples:
-            NotFoundExample:
-              summary: Default 404 response
-              x-microcks-default: true
-              value:
-                message: Not Found

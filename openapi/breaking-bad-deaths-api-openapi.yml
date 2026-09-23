@@ -1,7 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Breaking Bad Characters Deaths API
-  description: Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe. The original upstream provider (breakingbadapi.com) is no longer reachable as of 2026 — DNS resolution fails and the documentation site at https://breakingbadapi.com/documentation returns no response. This OpenAPI document is preserved as a historical record of the API's documented contract, drawn from the canonical source repository at github.com/timbiles/Breaking-Bad--API and from archived community documentation (drangovski.github.io, mridul.tech/breaking-bad-api).
+  title: Breaking Bad Deaths API
+  description: Community-built REST API exposing characters, quotes, episodes, and deaths from the Breaking Bad and Better Call Saul television universe.
   version: 1.0.0
   contact:
     name: Tim Biles (original maintainer)
@@ -116,19 +116,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  responses:
-    RateLimited:
-      description: Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          examples:
-            RateLimitedExample:
-              summary: Default 429 response
-              x-microcks-default: true
-              value:
-                message: Rate limit exceeded. Try again in 24 hours.
   schemas:
     Error:
       type: object
@@ -176,3 +163,16 @@ components:
           type: integer
           description: Number of deaths attributed to this single record.
           example: 1
+  responses:
+    RateLimited:
+      description: Rate limit exceeded. The original upstream enforced 10,000 requests per day per IP and returned 429 until the 24-hour window rolled over.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          examples:
+            RateLimitedExample:
+              summary: Default 429 response
+              x-microcks-default: true
+              value:
+                message: Rate limit exceeded. Try again in 24 hours.

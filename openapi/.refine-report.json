@@ -1,10 +1,7 @@
 {
   "provider": "breaking-bad",
   "sources": [
-    "breaking-bad-characters-api-openapi.yml",
-    "breaking-bad-deaths-api-openapi.yml",
-    "breaking-bad-episodes-api-openapi.yml",
-    "breaking-bad-quotes-api-openapi.yml"
+    "_ae-authored/breaking-bad-openapi.yml"
   ],
   "outputs": [
     "breaking-bad-characters-api-openapi.yml",
@@ -16,11 +13,14 @@
   "errors": [],
   "warnings": [],
   "notes": [
-    "breaking-bad-characters-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "breaking-bad-deaths-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "breaking-bad-episodes-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
-    "breaking-bad-quotes-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "breaking-bad-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "breaking-bad-characters-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "breaking-bad-deaths-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "breaking-bad-episodes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "breaking-bad-quotes-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
