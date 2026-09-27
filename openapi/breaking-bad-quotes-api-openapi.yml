@@ -130,6 +130,14 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Error:
+      type: object
+      description: Generic error envelope.
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Not Found
     Quote:
       type: object
       description: A memorable quote attributed to a character.
@@ -152,14 +160,6 @@ components:
           type: string
           description: The series the quote originated from.
           example: Breaking Bad
-    Error:
-      type: object
-      description: Generic error envelope.
-      properties:
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Not Found
   responses:
     NotFound:
       description: The requested resource was not found.

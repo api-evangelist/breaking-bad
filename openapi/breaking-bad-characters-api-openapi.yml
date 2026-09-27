@@ -238,14 +238,6 @@ components:
               value:
                 message: Rate limit exceeded. Try again in 24 hours.
   schemas:
-    Error:
-      type: object
-      description: Generic error envelope.
-      properties:
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Not Found
     Character:
       type: object
       description: A character from the Breaking Bad or Better Call Saul series.
@@ -310,3 +302,11 @@ components:
           items:
             type: integer
           example: []
+    Error:
+      type: object
+      description: Generic error envelope.
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Not Found

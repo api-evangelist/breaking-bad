@@ -151,14 +151,6 @@ components:
               value:
                 message: Rate limit exceeded. Try again in 24 hours.
   schemas:
-    Error:
-      type: object
-      description: Generic error envelope.
-      properties:
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Not Found
     Episode:
       type: object
       description: An episode of Breaking Bad or Better Call Saul.
@@ -197,3 +189,11 @@ components:
           type: string
           description: Series the episode belongs to — `Breaking Bad` or `Better Call Saul`.
           example: Breaking Bad
+    Error:
+      type: object
+      description: Generic error envelope.
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Not Found

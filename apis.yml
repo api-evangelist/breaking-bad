@@ -7,17 +7,20 @@ description: >-
   BSD-3-Clause and is the basis for the historical OpenAPI and capability artifacts in this repo.
 url: https://github.com/timbiles/Breaking-Bad--API
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - timbiles/breaking-bad--api
   open_source: unknown
   commercial: true
   callable_host: false
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: unknown
@@ -48,7 +51,7 @@ tags:
   - Video
   - Television
   - Public APIs
-  - Open-Source
+  - Open Source
   - Breaking Bad
   - Better Call Saul
   - Pop Culture
@@ -62,6 +65,7 @@ tags_raw:
   - Better Call Saul
   - Pop Culture
   - Deprecated
+  - Open-Source
 apis:
 - aid: breaking-bad:breaking-bad-characters-api
   name: Breaking Bad Characters API
