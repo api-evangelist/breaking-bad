@@ -130,6 +130,14 @@ components:
               value:
                 message: Rate limit exceeded. Try again in 24 hours.
   schemas:
+    Error:
+      type: object
+      description: Generic error envelope.
+      properties:
+        message:
+          type: string
+          description: Human-readable error message.
+          example: Not Found
     Death:
       type: object
       description: A catalogued on-screen death from the series.
@@ -168,11 +176,3 @@ components:
           type: integer
           description: Number of deaths attributed to this single record.
           example: 1
-    Error:
-      type: object
-      description: Generic error envelope.
-      properties:
-        message:
-          type: string
-          description: Human-readable error message.
-          example: Not Found
