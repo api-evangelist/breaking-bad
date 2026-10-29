@@ -1,4 +1,4 @@
-# Breaking Bad (breaking-bad)
+# Breaking Bad
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,77 +64,104 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
+> **No longer operating.** This company or product has shut down, been discontinued, or been deprecated. This profile is kept as a historical record and is not maintained or rated.
+
 Community-built REST API exposing characters, quotes, episodes, and on-screen deaths from the Breaking Bad and Better Call Saul television universe. The original hosted service at breakingbadapi.com is no longer reachable as of 2026-05-29 (DNS does not resolve). The canonical source code remains at github.com/timbiles/Breaking-Bad--API under BSD-3-Clause and is the basis for the historical OpenAPI and capability artifacts in this repo.
 
-**APIs.json:** [https://github.com/timbiles/Breaking-Bad--API](https://github.com/timbiles/Breaking-Bad--API)
+**Areas:** Video · Television · Public APIs · Open Source · Breaking Bad · Better Call Saul · Pop Culture · Deprecated
 
-## Tags
+## Breaking Bad on APIs.io (historical record)
 
-- Video
-- Television
-- Public APIs
-- Open Source
-- Breaking Bad
-- Better Call Saul
-- Pop Culture
-- Deprecated
+Everything profiled for Breaking Bad is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/breaking-bad/](https://apis.io/providers/breaking-bad/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (4)
 
-- **Created:** 2026-05-28
-- **Modified:** 2026-05-29
+- [Breaking Bad Characters API](https://apis.io/apis/breaking-bad/breaking-bad-characters-api/) — Characters from the Breaking Bad and Better Call Saul universe.
+- [Breaking Bad Deaths API](https://apis.io/apis/breaking-bad/breaking-bad-deaths-api/) — On-screen deaths catalogued across the series.
+- [Breaking Bad Episodes API](https://apis.io/apis/breaking-bad/breaking-bad-episodes-api/) — Episodes from the Breaking Bad and Better Call Saul series.
+- [Breaking Bad Quotes API](https://apis.io/apis/breaking-bad/breaking-bad-quotes-api/) — Memorable quotes attributed to characters.
 
-## APIs
+### Published properties
 
-### Breaking Bad API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-REST API for Breaking Bad and Better Call Saul data — characters, quotes, episodes, and deaths. Anonymous access (no API key). The original hosted service enforced 10,000 requests per IP per day and is now unreachable.
+#### Agentic access (1)
 
-- **Human URL:** [https://github.com/timbiles/Breaking-Bad--API](https://github.com/timbiles/Breaking-Bad--API)
-- **Base URL:** `https://www.breakingbadapi.com/api`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Breaking Bad Agentic Access](https://apis.io/agentic-access/breaking-bad/breaking-bad-agentic-access/)
 
-- Video
-- Television
-- Characters
-- Quotes
-- Episodes
-- Deaths
+#### JSON Schema (4)
 
-#### Properties
+The data models the API reads and writes.
 
-- [Documentation](https://github.com/timbiles/Breaking-Bad--API#readme)
-- [Source Code](https://github.com/timbiles/Breaking-Bad--API)
-- [OpenAPI](openapi/breaking-bad-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/breaking-bad.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/breaking-bad.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/breaking-bad-character-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/breaking-bad-quote-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/breaking-bad-episode-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/breaking-bad-death-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](json-structure/breaking-bad-character-structure.json)
-- [JSON Structure](json-structure/breaking-bad-quote-structure.json)
-- [JSON Structure](json-structure/breaking-bad-episode-structure.json)
-- [JSON Structure](json-structure/breaking-bad-death-structure.json)
-- [Examples](examples/breaking-bad-listcharacters-example.json)
-- [Examples](examples/breaking-bad-getrandomquote-example.json)
-- [Examples](examples/breaking-bad-listepisodes-example.json)
-- [Examples](examples/breaking-bad-getrandomdeath-example.json)
+- [Character](https://apis.io/schemas/breaking-bad/breaking-bad-character/)
+- [Death](https://apis.io/schemas/breaking-bad/breaking-bad-death/)
+- [Episode](https://apis.io/schemas/breaking-bad/breaking-bad-episode/)
+- [Quote](https://apis.io/schemas/breaking-bad/breaking-bad-quote/)
 
-## Common Properties
+#### JSON Structure (4)
+
+Data models expressed in JSON Structure.
+
+- [Breaking Bad Character Structure](https://apis.io/json-structure/breaking-bad/breaking-bad-character-structure/)
+- [Breaking Bad Death Structure](https://apis.io/json-structure/breaking-bad/breaking-bad-death-structure/)
+- [Breaking Bad Episode Structure](https://apis.io/json-structure/breaking-bad/breaking-bad-episode-structure/)
+- [Breaking Bad Quote Structure](https://apis.io/json-structure/breaking-bad/breaking-bad-quote-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Breaking Bad Context](https://apis.io/jsonld/breaking-bad/breaking-bad-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Breaking Bad API Vocabulary](https://apis.io/vocabularies/breaking-bad/breaking-bad-vocabulary/)
+
+#### Examples (1)
+
+Example requests and responses.
+
+- [Breaking Bad Getrandomdeath Example](https://apis.io/examples/breaking-bad/breaking-bad-getrandomdeath-example/)
+
+#### Collections (5)
+
+Postman and Open Collection request collections.
+
+- [Breaking Bad API](https://apis.io/collections/breaking-bad/open-breaking-bad/)
+- [Breaking Bad Characters API](https://apis.io/collections/breaking-bad/open-breaking-bad-characters-api/)
+- [Breaking Bad Characters Deaths API](https://apis.io/collections/breaking-bad/open-breaking-bad-deaths-api/)
+- [Breaking Bad Characters Episodes API](https://apis.io/collections/breaking-bad/open-breaking-bad-episodes-api/)
+- [Breaking Bad Characters Quotes API](https://apis.io/collections/breaking-bad/open-breaking-bad-quotes-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Breaking Bad — jsonschema rules](https://apis.io/rules/breaking-bad/breaking-bad-jsonschema-spectral-rules/)
+- [Breaking Bad API Rules](https://apis.io/rules/breaking-bad/breaking-bad-rules/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://github.com/timbiles/Breaking-Bad--API)
-- [Source Code](https://github.com/timbiles/Breaking-Bad--API)
-- [License](https://github.com/timbiles/Breaking-Bad--API/blob/master/LICENSE.rst)
-- [Public APIs Listing](https://github.com/public-apis/public-apis)
-- [Plans](https://github.com/timbiles/Breaking-Bad--API#readme)
-- [Rate Limits](https://github.com/timbiles/Breaking-Bad--API#readme)
-- [JSON-LD](json-ld/breaking-bad-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Vocabulary](vocabulary/breaking-bad-vocabulary.yml)
-- [Spectral Rules](rules/breaking-bad-rules.yml)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Not rated** — this company is recorded as no longer operating, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Breaking Bad: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/breaking-bad/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
